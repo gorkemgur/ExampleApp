@@ -1,0 +1,10 @@
+/*
+  Localizable.strings
+  Example
+
+  Created by Görkem Gür on 21.03.2022.
+  
+*/
+"welcome_message" = "Medium İçin Test";
+"example_label" = "Örnek Yazı";
+

@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Example
+
+  Created by Görkem Gür on 21.03.2022.
+  
+*/
+
+"welcome_message" = "Test For Medium";
+"example_label" = "Example Label";
+
