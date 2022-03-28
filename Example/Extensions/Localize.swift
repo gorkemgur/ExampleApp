@@ -24,21 +24,6 @@ let LCLBaseBundle = "Base"
 /// Name for language change notification
 public let LCLLanguageChangeNotification = "LCLLanguageChangeNotification"
 
-enum LanguageType: String {
-    case english = "en"
-    case arabic = "ar"
-    
-    var displayName: String {
-        switch self {
-        case .english:
-            return "welcome-language-english".localized
-        case .arabic:
-            return "welcome-language-arabic".localized
-        }
-    }
-}
-// MARK: Localization Syntax
-
 /**
 Swift 1.x friendly localization syntax, replaces NSLocalizedString
 - Parameter string: Key to be localized.
@@ -75,6 +60,10 @@ public extension String {
      Swift 2 friendly localization syntax, replaces NSLocalizedString
      - Returns: The localized string.
      */
+
+        /**
+        You need to change Example.Example with your project Bundle Identifier
+        */
     var localized: String {
         return localized(using: nil, in: Bundle(identifier: "Example.Example"))
     }
@@ -140,21 +129,7 @@ open class LocalizeExample: NSObject {
     open class func semanticAttribute() -> UISemanticContentAttribute {
         return self.currentCharacterDirection() == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
     }
-    
-    /**
-     Change the current language
-     - Parameter language: Desired language.
-     */
-    open class func setCurrentLanguage(_ language: String) {
-        let selectedLanguage = availableLanguages().contains(language) ? language : defaultLanguage()
-        if (selectedLanguage != currentLanguage()){
-            UserDefaults.standard.set(selectedLanguage, forKey: LCLCurrentLanguageKey)
-            UserDefaults.standard.set([selectedLanguage], forKey: LCLAppleLanguagesKey)
-            UserDefaults.standard.synchronize()
-            NotificationCenter.default.post(name: Notification.Name(rawValue: LCLLanguageChangeNotification), object: nil)
-        }
-    }
-    
+
     /**
      Default language
      - Returns: The app's default language. String.
@@ -175,13 +150,6 @@ open class LocalizeExample: NSObject {
     }
     
     /**
-     Resets the current language to the default
-     */
-    open class func resetCurrentLanguageToDefault() {
-        setCurrentLanguage(self.defaultLanguage())
-    }
-    
-    /**
      Get the current language's display name for a language.
      - Parameter language: Desired language.
      - Returns: The localized string.
@@ -194,5 +162,3 @@ open class LocalizeExample: NSObject {
         return String()
     }
 }
-
-

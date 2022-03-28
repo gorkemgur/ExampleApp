@@ -6,6 +6,6 @@
   
 */
 
-"welcome_message" = "Test For Medium";
-"example_label" = "Example Label";
+"welcome-message" = "Test For Medium";
+"example-label" = "Example Label";
 
